@@ -40,12 +40,9 @@ public class Game {
     }
 
     public void endGameTop(Player player, JTextField text, JTable table) throws IOException {
-        String finalName = "";
-        if(Objects.equals(text.getText(), "")){
+        String finalName = text.getText().trim();
+        if(finalName.isEmpty()) {
             finalName = "Неизвестный игрок";
-        }
-        else{
-            finalName = text.getText();
         }
         results.add(new Result(finalName, player.getPoints()));
         results.sort(Comparator.comparing(Result::getPoints).reversed());

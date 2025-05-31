@@ -155,7 +155,7 @@ public class Mediator {
     }
 
     public void setRoundEndText(String text, ImageIcon img) {
-        endRoundLabel.setForeground(new java.awt.Color(39, 25, 25));
+        endRoundLabel.setForeground(new java.awt.Color(255, 0, 0));
         endRoundLabel.setText(text);
         endRoundLabel.setIcon(img);
     }

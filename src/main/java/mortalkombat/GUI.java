@@ -235,7 +235,7 @@ public class GUI extends javax.swing.JFrame {
 
         playerHeroLabel.setFont(new java.awt.Font("Comic Sans MS", 2, 14)); // NOI18N
         playerHeroLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        playerHeroLabel.setText("Fighter");
+        playerHeroLabel.setText("You");
 
         stunLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         stunLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
