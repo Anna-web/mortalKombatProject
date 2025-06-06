@@ -907,6 +907,14 @@ public class GUI extends javax.swing.JFrame {
 
         setLocationsLabel.setText("Введите количество локаций, которое хотите пройти");
 
+        setLocationsField.setDocument(new PlainDocument() {
+        @Override
+        public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
+            if (str.matches("[1-5]") && getLength() < 1) {
+                super.insertString(offs, str, a);
+            }
+        }
+        });
         setLocationsField.setText("3");
         setLocationsField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
