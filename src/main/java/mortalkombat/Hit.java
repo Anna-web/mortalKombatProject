@@ -12,19 +12,25 @@ public class Hit extends Action {
         switch (fighter2ActionType) {
             case "Hit" -> {
                 if (fighter2.isDebuffed() & fighter1.isDebuffed()) {
+                    System.out.println(fighter1.getName() + " HIT FOR : " + (-fighter1.getDamage() * 1.25 / 2));
                     fighter2.setHealth((int) (-fighter1.getDamage() * 1.25 / 2) + fighter2.getHealth());
                 }
                 if (fighter2.isDebuffed() & !fighter1.isDebuffed()) {
+                    System.out.println(fighter1.getName() + " HIT FOR : " + (-fighter1.getDamage() * 1.25));
                     fighter2.setHealth((int) (-fighter1.getDamage() * 1.25) + fighter2.getHealth());
                 }
                 if (!fighter2.isDebuffed() & fighter1.isDebuffed()) {
+                    System.out.println(fighter1.getName() + " HIT FOR : " + (-fighter1.getDamage() / 2));
                     fighter2.setHealth((int) (-fighter1.getDamage() / 2) + fighter2.getHealth());
                 }
                 if (!fighter2.isDebuffed() & !fighter1.isDebuffed()) {
+                    System.out.println(fighter1.getName() + " HIT FOR : " + (-fighter1.getDamage()));
                     fighter2.setHealth((int) (-fighter1.getDamage()) + fighter2.getHealth());
                 }
+
             }
             case "Block" -> {
+                System.out.println("BLOCK!" + "DMG: " + (-fighter2.getDamage() / 2));
                 fighter1.setHealth(-fighter2.getDamage() / 2 + fighter1.getHealth());
             }
             case "Debuff" -> {
