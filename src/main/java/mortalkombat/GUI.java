@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.plaf.basic.BasicProgressBarUI;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
 public class GUI extends javax.swing.JFrame {
 
@@ -151,10 +155,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        enemyHealthBar.setUI(new BasicProgressBarUI());
+        playerHealthBar.setUI(new BasicProgressBarUI());
+
         playerHealthBar.setBackground(new java.awt.Color(205, 205, 205));
         playerHealthBar.setForeground(new java.awt.Color(59, 138, 75));
         playerHealthBar.setMaximum(80);
         playerHealthBar.setMinimum(-1);
+
 
         enemyHealthBar.setBackground(new java.awt.Color(205, 205, 205));
         enemyHealthBar.setForeground(new java.awt.Color(59, 138, 75));
@@ -908,13 +916,14 @@ public class GUI extends javax.swing.JFrame {
         setLocationsLabel.setText("Введите количество локаций, которое хотите пройти");
 
         setLocationsField.setDocument(new PlainDocument() {
-        @Override
-        public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
-            if (str.matches("[1-5]") && getLength() < 1) {
-                super.insertString(offs, str, a);
+            @Override
+            public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
+                if (str.matches("[1-5]") && getLength() < 1) {
+                    super.insertString(offs, str, a);
+                }
             }
-        }
         });
+
         setLocationsField.setText("3");
         setLocationsField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1215,6 +1224,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_closeCantUseItemButtonActionPerformed
 
     private void startWithLocationsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startWithLocationsButtonActionPerformed
+        System.out.println("Button clicked! Input: " + setLocationsField.getText());
         setLocationsFrame.setVisible(false);
         locationsNumber = Integer.parseInt(setLocationsField.getText());
         locationLabel.setText("Текущая локация: " + game.fight.location.getCurrentLocation() + "/" + locationsNumber);
@@ -1261,6 +1271,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_chooseAttributeButtonActionPerformed
 
     private void debuffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_debuffButtonActionPerformed
+        System.out.println("DEBUFF USED");
         game.fight.hit(2, game.getResults(), locationsNumber, game.getEnemies());
     }//GEN-LAST:event_debuffButtonActionPerformed
 

@@ -8,6 +8,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import java.awt.*;
 
 public class Mediator {
     private final JLabel enemyHealthLabel;
@@ -195,5 +196,28 @@ public class Mediator {
         enemyHealthLabel.setText(Integer.toString(enemy.getMaxHealth()) + "/" + Integer.toString(enemy.getMaxHealth()));
         playerDamageValueLabel.setText(Integer.toString(player.getDamage()));
         setBagText(items);
+    }
+
+    public void updateDebuffVisuals(Player player, boolean isDebuffed) {
+        // Change health bar color when debuffed
+        if(isDebuffed){
+            playerHealthBar.setForeground(new Color(128, 0, 128));
+        }
+        else{
+            playerHealthBar.setForeground(new java.awt.Color(59, 138, 75));
+        }
+
+    }
+
+    public void updateDebuffVisuals(Enemy enemy,  boolean isDebuffed) {
+        // Change health bar color when debuffed
+
+        if(isDebuffed){
+            enemyHealthBar.setForeground(new Color(128, 0, 128));
+        }
+        else{
+            enemyHealthBar.setForeground(new java.awt.Color(59, 138, 75));
+        }
+
     }
 }

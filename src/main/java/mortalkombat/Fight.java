@@ -45,18 +45,22 @@ public class Fight {
 
     public void checkDebuff() {
         if (!enemy.isDebuffed()) {
-            mediator.setDebuffLabel(enemy, false);
+            System.out.println("enemy not DEBUFF");
+            mediator.updateDebuffVisuals(enemy, false);
         }
         if (enemy.isDebuffed()) {
-            mediator.setDebuffLabel(enemy, true);
+            System.out.println("enemy DEBUFF");
             enemy.loseDebuffTurn();
+            mediator.updateDebuffVisuals(enemy, true);
         }
         if (!player.isDebuffed()) {
-            mediator.setDebuffLabel(player, false);
+            System.out.println("player NOT DEBUFF");
+            mediator.updateDebuffVisuals(player, false);
         }
         if (player.isDebuffed()) {
-            mediator.setDebuffLabel(enemy, true);
+            System.out.println("player DEBUFF");
             player.loseDebuffTurn();
+            mediator.updateDebuffVisuals(player, true);
         }
 
     }
